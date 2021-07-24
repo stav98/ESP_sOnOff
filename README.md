@@ -10,3 +10,6 @@ DIY ESP8266 - Node MCU 3 channel sonoff switch with MQTT and HTTP support
 <img src="https://github.com/stav98/ESP_sOnOff/blob/main/images/screenshot1.png" width="400">&nbsp;&nbsp;<img src="https://github.com/stav98/ESP_sOnOff/blob/main/images/screenshot2.png" width="400"><br>
 <img src="https://github.com/stav98/ESP_sOnOff/blob/main/images/screenshot3.png" width="400">&nbsp;&nbsp;<img src="https://github.com/stav98/ESP_sOnOff/blob/main/images/screenshot4.png" width="400"><br>
 <img src="https://github.com/stav98/ESP_sOnOff/blob/main/images/screenshot5.png" width="400"><br>
+Το λογισμικό είναι γραμμένο κατά ένα μέρος σε C++ (wiring) και το υπόλοιπο σε HTML, JavaScript, JQuery και CSS. Χρησιμοποίησα το IDE VS Code και το PlatformIO. 
+Υπάρχει η δυνατότητα αυτόματης αναβάθμισης μέσω διαδικτύου και του firmware αλλά και των σελίδων HTML, CSS κλπ.<br>
+Το σύστημα κρατάει αρχείο καταγραφής Log και επίσης το παρουσιάζει με διαγράμματα.
