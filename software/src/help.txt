@@ -1,0 +1,14 @@
+Generic ESP8266 module
+Upload Speed 460800
+CPU Frequency: 160MHz
+Crystal Frequency: 26MHz
+Flash Size: 4M(FS:3MB OTA:~ 512KB) Sketch max size :  659456 - FS: 2880 
+            ή (FS:2MB OTA:~1019KB) Sketch max size : 1708032 - FS: 2880
+Flash Mode: QIO
+Flash Frequency: 40MHz
+Reset Method: Node MCU ή DTR
+nonos SDK 2.2.1+119 (191122)
+
+
+Για να σβήσω ένα retained μήνυμα από τον server γράφω:
+mosquitto_pub -t room3/light3_sub -u stav -P preveza -n -r -d
