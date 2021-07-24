@@ -1,0 +1,185 @@
+@media screen
+  and (device-width: 360px)
+  and (device-height: 640px)
+  and (-webkit-device-pixel-ratio: 3) {
+
+}
+
+html {
+      /*font-family: Helvetica;*/
+      font-family: sans-serif;
+      display: inline-block;
+      /*text-align: center;*/
+     }
+
+h1 {
+    color: #0F3376;
+    font-size:22px;
+    /*padding: 1vh;  /*Relative to 1% of the height of the viewport*/
+   }
+
+p  {
+    font-size: .5em; /*rem = root element size*/
+   }
+
+.button {
+         display: inline-block;
+         width: 4.6em;
+         background-color: #008CBA;
+         border: none;
+         border-radius: 4px;
+         color: white;
+         padding: 10px;
+         text-decoration: none;
+         font-size: 20px;
+         margin: 2px;
+         cursor: pointer;
+        }
+
+.container {
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+            float: left;
+           }
+
+.instr1 {
+		 display: inline-block;
+		 font-size: 10pt;
+	     font-weight: bold;
+		 text-align: left;
+		 padding: 0px 6px 6px 6px;
+		 border-radius: 5px;
+		 background-color: #ecec56
+	    }
+
+.disp1 {
+		float: left;
+	    width: 1.5em;
+	    margin: 4px 2px;
+	    padding: 1px;
+	    text-align: right;
+	    border: 1px solid black;
+	    line-height: 20px;
+	    font-size: 20px;
+	    font-weight: bold;
+	    background-color: #edeae1;
+	   }
+
+.disp2 {
+		float: left;
+	    height: 14px;
+	    width: 3em;
+	    padding: 2px;
+	    text-align: right;
+	    border: 1px solid black;
+	    line-height: 14px;
+	    font-size: 12px;
+	    font-weight: bold;
+	    background-color: #edeae1;
+	    color: blue;
+	   }
+
+.lbl1  {
+        float:left;
+        padding:1px;
+        margin-top:4px;
+        text-align:center;
+        line-height:22px;
+        font-size:22px;
+        font-weight:bold;
+       }
+
+.led {
+    margin: 3px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: #000 0 -1px 6px 1px;
+}
+
+.led-red {
+    background-color: #F00;
+    box-shadow: #000 0 -1px 6px 1px, inset #600 0 -1px 8px, #F00 0 3px 11px;
+}
+
+.led-orange {
+    background-color: #FF7000;
+    box-shadow: #000 0 -1px 6px 1px, inset #630 0 -1px 8px, #FF7000 0 3px 11px;
+}
+
+.led-yellow {
+    background-color: #FF0;
+    box-shadow: #000 0 -1px 6px 1px, inset #660 0 -1px 8px, #FF0 0 3px 11px;
+}
+
+.led-green {
+    background-color: #80FF00;
+    box-shadow: #000 0 -1px 6px 1px, inset #460 0 -1px 8px, #80FF00 0 3px 11px;
+}
+
+.led-blue {
+    background-color: #06F;
+    box-shadow: #000 0 -1px 6px 1px, inset #006 0 -1px 8px, #06F 0 3px 11px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

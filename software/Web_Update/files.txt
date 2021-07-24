@@ -1,0 +1,8 @@
+#Download Instrunctions
+[Version=1.01]
+
+[AddFiles]
+index.html
+firmware.bin
+
+[DelFiles]

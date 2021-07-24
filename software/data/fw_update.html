@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIGHTS : Αναβάθμιση λογισμικού</title>
+  <!-- Setup Working Parameters -->
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() //Όταν φορτώσει η σελίδα
+    {
+	//Φόρτωμα κατάστασης στα Control σε τακτά χρονικά διαστήματα σε JQuery
+     var l_pre = 0;
+     var auto_refresh = setInterval(
+          function ()
+            {
+             var $result = $('<div>'); //Δημιουργεί ένα στοιχείο div στη μνήμη
+			 //Φορτώνει το στοιχείο με Id filename
+             $result.load('/status #filename', function(result) {
+                 var variable = $result.text(); //Αποθηκεύει το περιεχόμενο
+                 if (variable !== "" && l_pre < variable.length)
+                    {
+					 //console.log(variable);
+                     $('#Status').html(variable); //Εμφάνισε όνομα στο div
+                     l_pre = variable.length;
+                    }
+                });
+
+             //Φορτώνει το στοιχείο με Id Dl_OK ***
+             $result.load('/status #Dl_OK', function(result) {
+                 var variable = $result.text(); //Αποθηκεύει το περιεχόμενο 'true' ή 'false'
+                 if (variable === "true")
+                     $('#FlashFW').prop("disabled", false);
+                 else if (variable === "false")
+                     $('#FlashFW').prop("disabled", true);
+                });
+
+            }, 1000); //Ανανέωση κάθε 1000msec
+
+    //Αν πατήθηκε το κουμπί FlashFW
+    $("#FlashFW").click(function() {
+              var url = "/FlashFW"; // the script where you handle the form input.
+              var data = "flash=yes";
+              if (confirm('Προσοχή! Θα γίνει εγκατάσταση νεότερης έκδοσης λογισμικού στη μονάδα. \n Είστε σίγουρος;'))
+                 {
+                  $.ajax({
+                          type: "GET",
+                          url: url,
+                          data: data, //Serialize τα δεδομένα της φόρμας
+                          success: function(){alert("Γίνεται ενημέρωση λογισμικού...\nΜετά από 30sec πατήστε το OK ώστε να γίνει ανακατεύθυνση στην αρχική σελίδα."); location.href="/";} //Αν έγινε επιτυχώς επαναφόρτωσε τη σελίδα
+                         });
+                 }
+              return false; //avoid to execute the actual submit of the form.
+              });
+    });
+  </script>
+ </head>
+
+ <body>
+  <div class="container">
+   <center>
+	   <h1>Έλεγχος Φωτισμού</h1>
+       <h1>Αναβάθμιση λογισμικού</h1>
+   </center>
+
+   <center>
+	 <b>Κατάσταση - Αρχεία:</b>
+	 <div id="Status" style="width: 400px; height: 400px; border-style: solid; border-width: 1px; text-align: left; background-color: #d3fa93"></div>
+     <br>
+     <button type="button" id="FlashFW">Εγγραφή λογισμικού</button>&nbsp;
+     <a href="/">Επιστροφή</a><br>
+     <br><small>V %VERSION% (c)2021 <a href="https://sv6gmp.blogspot.gr" target="_blank">Stavros S. Fotoglou</small></a>
+  </center>
+  </div>
+ </body>
+</html>

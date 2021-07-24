@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIGHTS</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript">
+    var cnt = 0;
+    $(document).ready(function() //Όταν φορτώσει η σελίδα
+    {
+	 //Προφόρτωση εικόνων
+	 var img1 ="data:image/png;base64,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"
+     var img2 ="data:image/png;base64,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"
+
+	 //Φόρτωμα κατάστασης στα Control σε τακτά χρονικά διαστήματα σε JQuery
+     var auto_refresh = setInterval(
+          function ()
+            {
+             var $result = $('<div>'); //Δημιουργεί ένα στοιχείο div στη μνήμη
+			 //Φορτώνει το στοιχείο με Id internet
+             $result.load('/status #internet', function(result) {
+                 var variable = $result.text(); //Αποθηκεύει το περιεχόμενο 'true' ή 'false'
+                 if (variable === "false")
+                     $("#internet").html($("<img>").attr({src: img2, width: "24" })); //Δεν υπάρχει διαδίκτυο
+                 else if (variable === "true")
+                     $("#internet").html($("<img>").attr({src: img1, width: "24" })); //Υπάρχει διαδίκτυο
+             });
+
+             //Φορτώνει το στοιχείο με Id mqtt_state
+             $result.load('/status #mqtt_state', function(result) {
+                 var variable = $result.text(); //Αποθηκεύει το περιεχόμενο 'fasle' ή 'true'
+                 if (variable === "false")
+                     $('#mqtt_state').attr("class", "led led-red"); //Led κόκκινο
+                 else if (variable === "true")
+                     $('#mqtt_state').attr("class", "led led-green"); //Led πράσινο
+                 else if (variable === "none")
+                     $('#mqtt_state').attr("class", "led"); //Led σβηστό
+             });
+
+			 //Φορτώνει το στοιχείο με Id Switch1_status ***
+             $result.load('/status #Switch1_status', function(result) {
+                 var variable = $result.text(); //Αποθηκεύει το περιεχόμενο 'IsOn' ή 'IsOff'
+                 if (cnt == 0) //Αν πέρασε η καθυστέρηση τότε ενημέρωσε την κατάσταση του διακόπτη
+                    {
+                     if (variable === "IsOn")
+                         $('#Switch1').prop("checked", true);
+                     else if (variable === "IsOff")
+                         $('#Switch1').prop("checked", false);
+                     $('#Switch1_Val').html(($('#Switch1').is(':checked'))?'ON':'OFF');
+			        }
+                });
+
+			 //Φορτώνει το στοιχείο με Id Switch2_status ***
+             $result.load('/status #Switch2_status', function(result) {
+                 var variable = $result.text(); //Αποθηκεύει το περιεχόμενο 'IsOn' ή 'IsOff'
+                 if (cnt == 0) //Αν πέρασε η καθυστέρηση τότε ενημέρωσε την κατάσταση του διακόπτη
+                    {
+                     if (variable === "IsOn")
+                         $('#Switch2').prop("checked", true);
+                     else if (variable === "IsOff")
+                         $('#Switch2').prop("checked", false);
+                     $('#Switch2_Val').html(($('#Switch2').is(':checked'))?'ON':'OFF');
+			        }
+                });
+
+			 //Φορτώνει το στοιχείο με Id Switch3_status ***
+             $result.load('/status #Switch3_status', function(result) {
+                 var variable = $result.text(); //Αποθηκεύει το περιεχόμενο 'IsOn' ή 'IsOff'
+                 if (cnt == 0) //Αν πέρασε η καθυστέρηση τότε ενημέρωσε την κατάσταση του διακόπτη
+                    {
+                     if (variable === "IsOn")
+                         $('#Switch3').prop("checked", true);
+                     else if (variable === "IsOff")
+                         $('#Switch3').prop("checked", false);
+                     $('#Switch3_Val').html(($('#Switch3').is(':checked'))?'ON':'OFF');
+			        }
+                });
+
+             $('#curTime').load('/status #time'); //Το στοιχείο με Id time
+             $('#upTime').load('/status #up_time'); //Το στοιχείο με Id up_time
+             $('#S_Strength').load('/status #s_strength'); //Το στοιχείο με Id s_strength
+             //Κάθε ένα sec κατέβασε την τιμή της καθυστέρησης μέχρι αυτή να γίνει 0
+             if (cnt > 0)
+                 cnt--;
+
+            }, 1000); //Ανανέωση κάθε 1000msec
+
+     //Αν πατηθούν οι διακόπτες τότε να ενημερώνεται η τιμή στα διπλανά spans
+	 $('#Switch1_Val').html(($('#Switch1').is(':checked'))?'ON':'OFF');
+	 $(document).on('input', '#Switch1', function() { $('#Switch1_Val').html(($('#Switch1').is(':checked'))?'ON':'OFF'); });
+	 $('#Switch2_Val').html(($('#Switch2').is(':checked'))?'ON':'OFF');
+	 $(document).on('input', '#Switch2', function() { $('#Switch2_Val').html(($('#Switch2').is(':checked'))?'ON':'OFF'); });
+	 $('#Switch3_Val').html(($('#Switch3').is(':checked'))?'ON':'OFF');
+	 $(document).on('input', '#Switch3', function() { $('#Switch3_Val').html(($('#Switch3').is(':checked'))?'ON':'OFF'); });
+
+     //Αν πατήθηκε ο διακόπτης Switch1
+     $("#Switch1").click(function() {
+              var url = "/update"; // the script where you handle the form input.
+              var state = "Off";
+              //Αν πατήθηκε κουμπί από web interface και μπήκε έδω,
+              cnt = 2; //Θέσε καθυστέρηση ώστε να μην ανοίγει και μετά κλείνει λόγω του *** πάνω
+              //console.log($('#Switch1:checked').length);
+              if ($('#Switch1').is(':checked'))
+                 {
+                  $('#Switch1').prop("checked", true);
+	              state = "On";
+			     }
+              var data = "SW1=" + state;
+              //console.log(data);
+              $.ajax({
+                      type: "GET",
+                      url: url,
+                      data: data, // serializes the form's elements.
+                     });
+              //return false; // avoid to execute the actual submit of the form.
+                               });
+
+     //Αν πατήθηκε ο διακόπτης Switch2
+     $("#Switch2").click(function() {
+              var url = "/update"; // the script where you handle the form input.
+              var state = "Off";
+              //Αν πατήθηκε κουμπί από web interface και μπήκε έδω,
+              cnt = 2; //Θέσε καθυστέρηση ώστε να μην ανοίγει και μετά κλείνει λόγω του *** πάνω
+              if ($('#Switch2').is(':checked'))
+                 {
+                  $('#Switch2').prop("checked", true);
+	              state = "On";
+			     }
+              var data = "SW2=" + state;
+              //console.log(data);
+              $.ajax({
+                      type: "GET",
+                      url: url,
+                      data: data, // serializes the form's elements.
+                     });
+                               });
+
+      //Αν πατήθηκε ο διακόπτης Switch3
+     $("#Switch3").click(function() {
+              var url = "/update"; // the script where you handle the form input.
+              var state = "Off";
+              //Αν πατήθηκε κουμπί από web interface και μπήκε έδω,
+              cnt = 2; //Θέσε καθυστέρηση ώστε να μην ανοίγει και μετά κλείνει λόγω του *** πάνω
+              if ($('#Switch3').is(':checked'))
+                 {
+                  $('#Switch3').prop("checked", true);
+	              state = "On";
+			     }
+              var data = "SW3=" + state;
+              //console.log(data);
+              $.ajax({
+                      type: "GET",
+                      url: url,
+                      data: data, // serializes the form's elements.
+                     });
+                               });
+
+     $("#SetTime").click(function() {
+		      var currentTime = new Date();
+		      var url = "/settime";
+		      var data = "TIME=" + currentTime.getTime();
+		      $.ajax({
+                      type: "GET",
+                      url: url,
+                      data: data, // serializes the form's elements.
+                     });
+              return false; // avoid to execute the actual submit of the form.
+                               });
+    });
+  </script>
+ </head>
+
+ <body>
+  <div class="container">
+   <center><h1>Έλεγχος Φωτισμού</h1>
+    <span style="margin:0;font-size:12px;color:rgb(5, 63, 45);font-weight:bold">Uptime:</span>
+    <span id="upTime" style="margin:0;font-size:12px;color:rgb(0, 60, 255);font-weight:bold"></span> 
+   </center>
+   <table align="center" width="400">
+	 <tr bgcolor="#f7c95c" align="center" height="30">
+	   <td width="10%%">
+		<span id="internet"></span>
+	   </td>
+	   <td width="25%%">
+	    <span id="curTime" style="margin:0;font-size:14px;color:red;font-weight:bold">--:--:--</span>
+	   </td>
+	   <td width="25%%">
+		<span style="float: left; font-size: .5em">MQTT&nbsp;<div id="mqtt_state" class="led led-red" style="display:inline-block; vertical-align:middle"></div></span>
+	   </td>
+	   <td width="*">
+      <span id="S_Strength" style="font-size:10px;">---</span>
+     </td>
+	 </tr>
+   </table>
+   <table align="center" width="400">
+     <!-- Φως 1 -->
+     <tr bgcolor="#9fc3fc" height="70">
+       <td width="40%%" align="right">%A1_LABL%:&nbsp;</td>
+       <td width="*" style="padding: 5px">
+         <label class="switch">
+          <input type="checkbox" id="Switch1">
+          <span class="slider round"></span>
+         </label>
+         <span id="Switch1_Val"></span>
+       </td>
+     </tr>
+     <!-- Φως 1 - Τέλος -->
+
+     <!-- Φως 2 -->
+     <tr bgcolor="#c2f9df" height="70">
+       <td width="30%%" align="right">%A2_LABL%:&nbsp;</td>
+       <td width="*" style="padding: 5px">
+         <label class="switch">
+          <input type="checkbox" id="Switch2">
+          <span class="slider round"></span>
+         </label>
+         <span id="Switch2_Val"></span>
+       </td>
+     </tr>
+     <!-- Φως 2 - Τέλος -->
+
+     <!-- Φως 3 -->
+     <tr bgcolor="#f7db9e" height="70">
+       <td width="30%%" align="right">%A3_LABL%:&nbsp</td>
+       <td width="*" style="padding: 5px">
+         <label class="switch">
+          <input type="checkbox" id="Switch3">
+          <span class="slider round"></span>
+         </label>
+         <span id="Switch3_Val"></span>
+       </td>
+     </tr>
+     <!-- Φως 3 - Τέλος -->
+   </table>
+   <center>
+     <span id="SetTime" style="cursor: pointer" title="Θέσε ώρα από browser"><img width="32" style="vertical-align: middle" src="data:image/png;base64,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"></span>
+     <a href="setup_wp.html" title="Ρυθμίσεις λειτουργίας"><img width="32" style="vertical-align: middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABBCAMAAABW61JJAAAAulBMVEX///+S1e0wNEKJx94sMD9IS1YmIC+W2/QuMD6U2PAhJjeKyeArKzmNzeQnIzEqKDaP0egTGi4dIjQnLDuCu9EUGy8OFisfJDV4rMEmITAkHCvMzc/29vdWWWNLY3Pl5ee7vMBfYmuys7dljaBrl6sADidzdX1fhJbV1thyorZoanM9S1qen6SDhYxKYXFXd4g6PkuSk5lUcYKjpKk7R1bu7u/d3t9CU2J3qb6Ulps0O0l+f4ZwcnpGSVW5tL3HAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQflAR4VGgs66WtFAAADVUlEQVRYw7VX7VajMBAtAwtBSKHYVrSn0g89bc9aq/XHurrv/1w7SYAkJOkinp1fEDI383knjEb/UR4DIceB+jNoZDYMAGDsMxkDDAU4eUxOAwEKyCIOEAFcDdCvAN49If19qJTnD4CoBtj1BcB4X6/kS1bre3EmfVhegwtureVsIz3wvBKAA1dFvcd1vn9mX6+X4i1qATCMATudK++IPahMH/cewqZ6tp6Uc7MYMlTfYsMKgPjNcXgE3EaeKuUtrpFtvWhBKMT5NcTuVMaeLvHh+SQxUwNAc/nfYilOzM4XADDSXYAlkP4mYFaWliyEvQFCWyVcAcQ99WNrIVR65i/JFqCyVFIAxHTW8yMjNBGxRIADdHyIHzJWUiRL9PWDoxcWeilE9yDlXgW4dwDMNAtYtcKE9eBqgk+p76m96ehGogVa1soT44BYjcHctJ91+lTuSfVSwUZOJfoU9xaGNja63EK6ViLCs/y84/tbjDl/Heul2jVyrpX6dsx15nUjo/ZUy9SdJUwAd1qOdxzjyOfPNDaabWIATIx2ZRgBA0gszWbO06OFMRIB4FsArGk2AHwHAHUA5H0BPAeA1xcgqudIl7ddLhxikzBeDIAXk3CigwDAKdhh8cxaB5muXeIueGwLMSs9rd+OZhbLrnZTr5W4DH1Eqg+BQTeh0o9CPZDEJjAilfVu3IMn4updWnzTeJ3xyWf77RPUXMU4J98sedZnE2PD+Z5/2F+BRjY5wKuNkTZ6oh+Iwona1HLd2oxuqSONfVxq6zs3qXYLip7vwvBMjfqzFKoI9PDZLAyQHtCk23k51XpldnGy5fyKrJvNJJcpCmxz6aBodxDatbwZbguT8jKK3EZ9v7NZB/V9dCWhJmliDn1DTAMauTUyiS2pHE5poprA1xKxJmRqtAJOHtIi/ExJ9q6YwNTfM5L+anZQYtYS3pQJOyIpU1F+GW0QmEZdkynHTVB/PbIiiI3B7xVjGQmQsDv46jXgbUGnVn1+ywJ++p+6rqiIQs4NKNopyvas3ff9yUZyIItjzjzI2km84VasHT8ci/mLNgubsCNF7pWSvVn0+n15kgAw7Let4D4IgGIIwB6J3OLBl3484Tse1HcX/Tb0dRO+pT+qlj+YLC9u+gtBtS5YH3FsbwAAAABJRU5ErkJggg=="></a>
+     <a href="setup_net.html" title="Ρυθμίσεις δικτύου"><img width="32" style="vertical-align: middle" src="data:image/png;base64,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"></a>
+     <a href="log.html" title="Αρχείο καταγραφής"><img width="32" style="vertical-align: middle" src=" data:image/png;base64,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"></a>
+     <a href="/reset" title="Επαναφορά όλων σε OFF">RST</a>
+     <br>
+     <br><small>V %VERSION% (c)2021 <a href="https://sv6gmp.blogspot.gr" target="_blank">Stavros S. Fotoglou</small></a>
+   </center>
+  </div>
+ </body>
+</html>

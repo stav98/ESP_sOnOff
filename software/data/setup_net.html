@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>LIGHTS : Ρυθμίσεις δικτύου</title>
+   <link rel="stylesheet" href="style.css">
+   <script type="text/javascript" src="jquery.min.js"></script>
+   <script type="text/javascript">
+    function setmode()
+     {
+	  if ($('#SetAP').is(':checked'))
+	     {
+	      $('#ST_SSID').prop("disabled", true);
+	      $('#ST_KEY').prop("disabled", true);
+	      $('#AP_SSID').prop("disabled", false);
+	      $('#AP_CHANNEL').prop("disabled", false);
+	      $('#AP_ENCRYPT').prop("disabled", false);
+	      $('#AP_KEY').prop("disabled", false);
+	      if ($('#AP_ENCRYPT').is(':checked'))
+		      $('#AP_KEY').prop("disabled", false);
+	      else
+	          $('#AP_KEY').prop("disabled", true);
+	     }
+	  else if ($('#SetSTA').is(':checked'))
+	     {
+		  $('#AP_SSID').prop("disabled", true);
+		  $('#AP_CHANNEL').prop("disabled", true);
+		  $('#AP_ENCRYPT').prop("disabled", true);
+		  $('#AP_KEY').prop("disabled", true);
+		  $('#ST_SSID').prop("disabled", false);
+		  $('#ST_KEY').prop("disabled", false);
+		 }
+
+      if ($('#IP_STATIC').is(':checked'))
+         {
+	      $('#IP_ADDR').prop("disabled", false);
+	      $('#IP_MASK').prop("disabled", false);
+	      $('#IP_GATE').prop("disabled", false);
+	      $('#IP_DNS').prop("disabled", false);
+	     }
+	  else
+	     {
+		  $('#IP_ADDR').prop("disabled", true);
+	      $('#IP_MASK').prop("disabled", true);
+	      $('#IP_GATE').prop("disabled", true);
+	      $('#IP_DNS').prop("disabled", true);
+		 }
+	 }
+
+    $(document).ready(function() //Όταν φορτώσει η σελίδα
+     {
+      setmode();
+      $('#AP_CHANNEL').prop("selectedIndex", (%AP_CHANNEL% - 1));
+      //Αν πατήθηκε το κουμπί Save
+      $("#SaveBtn").click(function() {
+              var url = "/save_net"; // the script where you handle the form input.
+              var data = "N1=" + $('#SetAP').is(':checked') + "&N2=" + $('#AP_SSID').val() + "&N3=" + $('#AP_CHANNEL').val() +
+                        "&N4=" + $('#AP_ENCRYPT').is(':checked') + "&N5=" + $('#AP_KEY').val() + "&N6=" + $('#SetSTA').is(':checked') +
+                        "&N7=" + $('#ST_SSID').val() + "&N8=" + $('#ST_KEY').val() + "&N9=" + $('#IP_STATIC').is(':checked') +
+                        "&N10=" + $('#IP_ADDR').val() + "&N11=" + $('#IP_MASK').val() + "&N12=" + $('#IP_GATE').val() + "&N13=" + $('#IP_DNS').val() +
+                        "&N14=" + $('#NTP_TZ').val() + "&N15=" + $('#BROW_TO').val() + "&N16=" + $('#NTP_SRV').val() +
+                        "&N17=" + $('#MQTT_SRV').val() + "&N18=" + $('#MQTT_PORT').val() + "&N19=" + $('#MQTT_USER').val() + "&N20=" + $('#MQTT_PASS').val() +
+                        "&N21=" + $('#MQTT_CLIENT').val() + "&N22=" + $('#LOG_NAME').val() + "&N23=" + $('#LOG_PASS').val();
+              $.ajax({
+                      type: "GET",
+                      url: url,
+                      data: data, // serializes the form's elements.
+                      success: function(){alert("Γίνεται επανεκκίνηση του συστήματος ...\nΜετά από 10sec πατήστε το OK ώστε να γίνει ανακατεύθυνση στην αρχική σελίδα."); location.href="/";} //Αν έγινε επιτυχώς alert και μετά φόρτωσε την αρχική σελίδα
+                     });
+              return false; // avoid to execute the actual submit of the form.
+                               });
+     });
+
+	function handleChg(c)
+	 {
+	  setmode();
+	 }
+   </script>
+ </head>
+ <body>
+  <div style="width: 100%%">
+   <center><h1 style="font-size:24px"><font color="#0000FF">Ρυθμίσεις Δικτύου</font></h1></center>
+   <table align="center" width="365">
+     <tr bgcolor="#c2f9df">
+       <td width="30%%" rowspan="4">AP:
+         <input name="WiFi_Mode" type="radio" id="SetAP" onclick="handleChg(this)" checked>
+       </td>
+       <td width="*">
+         <label for="AP_SSID">SSID:</label>
+         <input type="text" id="AP_SSID" value="%AP_SSID%" style="width:140px; text-align:left;">
+       </td>
+     </tr>
+     <tr bgcolor="#c2f9df">
+       <td>
+		 <label for="AP_CHANNEL">Κανάλι:</label>
+         <select id="AP_CHANNEL">
+			 <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+             <option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+             <option value="11">11</option><option value="12">12</option><option value="13">13</option>
+         </select>
+       </td>
+     </tr>
+     <tr bgcolor="#c2f9df">
+       <td>
+		 <label for="AP_ENCRYPT">Κρυπτογράφηση:</label>
+         <input type="checkbox" name="Encrypt" id="AP_ENCRYPT" onclick="handleChg(this)">
+       </td>
+     </tr>
+     <tr bgcolor="#c2f9df">
+       <td>
+         <label for="AP_ΚΕΥ">Κλειδί:</label>
+         <input type="password" id="AP_KEY" value="%AP_KEY%" style="width:100px; text-align:left;">
+       </td>
+     </tr>
+	 <tr bgcolor="#fce294">
+       <td width="30%%" rowspan="2">STA:
+         <input name="WiFi_Mode" type="radio" id="SetSTA" onclick="handleChg(this)">
+       </td>
+       <td width="*">
+         <label for="ST_SSID">SSID:</label>
+         <input type="text" id="ST_SSID" value="%ST_SSID%" style="width:140px; text-align:left;">
+       </td>
+     </tr>
+	 <tr bgcolor="#fce294">
+       <td>
+         <label for="ST_KEY">Κλειδί:</label>
+         <input type="password" id="ST_KEY" value="%ST_KEY%" style="width:140px; text-align:left;">
+       </td>
+     </tr>
+	 <tr bgcolor="#efb386">
+       <td width="30%%" rowspan="5">IP ADDRESS</td>
+       <td width="*">
+		 <label for="IP_STATIC">Στατική:</label>
+         <input type="checkbox" name="Static" id="IP_STATIC" onclick="handleChg(this)" checked>
+       </td>
+     </tr>
+	 <tr bgcolor="#efb386">
+       <td>
+		 <label for="IP_ADDR">Διεύθ. IP:</label>
+         <input type="text" id="IP_ADDR" value="%IP_ADDR%" style="width:140px; text-align:left;">
+       </td>
+     </tr>
+	 <tr bgcolor="#efb386">
+       <td>
+		 <label for="IP_MASK">Μάσκα:</label>
+         <input type="text" id="IP_MASK" value="%IP_MASK%" style="width:140px; text-align:left;">
+       </td>
+     </tr>
+	 <tr bgcolor="#efb386">
+       <td>
+		 <label for="IP_GATE">Πύλη:</label>
+         <input type="text" id="IP_GATE" value="%IP_GATE%" style="width:140px; text-align:left;">
+       </td>
+     </tr>
+	 <tr bgcolor="#efb386">
+       <td>
+		 <label for="IP_DNS">DNS Server:</label>
+         <input type="text" id="IP_DNS" value="%IP_DNS%" style="width:140px; text-align:left;">
+       </td>
+     </tr>
+     <tr bgcolor="#a7e4fa">
+       <td width="30%%" rowspan="3">ΤΙΜΕ</td>
+       <td width="*">
+		 <label for="NTP_TZ">Ζώνη ώρας:</label>
+         <input type="text" id="NTP_TZ" value="%NTP_TZ%" style="width:30px; text-align:right;" title="Ζώνη ώρας π.χ. -2 -1, 0, 1, 2">
+       </td>
+     </tr>
+	 <tr bgcolor="#a7e4fa">
+       <td>
+		 <label for="BROW_TO">Browser Time Offset:</label>
+         <input type="text" id="BROW_TO" value="%BROW_TO%" style="width:30px; text-align:right;" title="Διαφορά ώρας όταν δεν υπάρχει σύνδεση Internet και παίρνει ώρα από τον browser. π.χ. -2 -1, 0, 1, 2">
+       </td>
+     </tr>
+     <tr bgcolor="#a7e4fa">
+       <td>
+		 <label for="NTP_SRV">NTP Server:</label>
+         <input type="text" id="NTP_SRV" value="%NTP_SRV%" style="width:160px; text-align:left;" title="Διακομιστής βάσης χρόνου π.χ. 'gr.pool.ntp.org' ή 'europe.pool.ntp.org'">
+       </td>
+     </tr>
+     <tr bgcolor="#88aeeb">
+       <td width="30%%" rowspan="5">MQTT</td>
+       <td width="*">
+		 <label for="MQTT_SRV">MQTT Broker:</label>
+         <input type="text" id="MQTT_SRV" value="%MQTT_SRV%" style="width:160px; text-align:left;" title="Όνομα διακομιστή MQTT. Βάλτε -1 για απενεργοποίηση.">
+       </td>
+     </tr>
+     <tr bgcolor="#88aeeb">
+       <td>
+		 <label for="MQTT_PORT">Port:</label>
+         <input type="text" id="MQTT_PORT" value="%MQTT_PORT%" style="width:40px; text-align:right;" title="Πόρτα TCP για σύνδεση με τον Broker. Συνήθως 1883.">
+       </td>
+     </tr>
+     <tr bgcolor="#88aeeb">
+       <td>
+		 <label for="MQTT_USER">Όνομα χρήστη:</label><br>
+         <input type="text" id="MQTT_USER" value="%MQTT_USER%" style="width:160px; text-align:left;" title="Όνομα χρήστη. Κενό αν επιτρέπονται ανώνυμες συνδέσεις.">
+       </td>
+     </tr>
+     <tr bgcolor="#88aeeb">
+       <td>
+		 <label for="MQTT_PASS">Κωδικός:</label><br>
+         <input type="password" id="MQTT_PASS" value="%MQTT_PASS%" style="width:160px; text-align:left;" title="Κωδικός σύνδεσης.">
+       </td>
+     </tr>
+     <tr bgcolor="#88aeeb">
+       <td>
+		 <label for="MQTT_CLIENT">Όνομα MQTT Client:</label><br>
+         <input type="text" id="MQTT_CLIENT" value="%MQTT_CLIENT%" style="width:160px; text-align:left;" title="Ένα μοναδικό όνομα πελάτη με το οποίο συνδέεται στον broker.">
+       </td>
+     </tr>
+     <tr bgcolor="#fac3c5">
+       <td width="30%%" rowspan="2">LOGIN:
+       </td>
+       <td width="*">
+         <label for="LOG_NAME">Όνομα χρήστη:</label>
+         <input type="text" id="LOG_NAME" value="%LOG_NAME%" style="width:140px; text-align:left;">
+       </td>
+     </tr>
+	 <tr bgcolor="#fac3c5">
+       <td>
+         <label for="LOG_PASS">Κωδικός:</label>
+         <input type="password" id="LOG_PASS" value="%LOG_PASS%" style="width:140px; text-align:left;">
+       </td>
+     </tr>
+   </table>
+   <center><!-- inc.sz-->
+    <a href="/">Επιστροφή</a>&nbsp;&nbsp;
+    <button type="button" id="SaveBtn">Αποθήκευση</button>&nbsp;&nbsp;
+    <a href="/fw_update">Αναβάθμιση λογισμικού</a><br>
+    <br><br><small>V %VERSION% (c)2021 <a href="https://sv6gmp.blogspot.gr" target="_blank">Stavros S. Fotoglou</small></a>
+   </center>
+  </div>
+  <script type="text/javascript">
+   if ("%AP_ENCRYPT%" == "true")
+       $('#AP_ENCRYPT').prop("checked", true);
+   else
+       $('#AP_ENCRYPT').prop("checked", false);
+   if ("%SetSTA%" == "true")
+	   $('#SetSTA').prop("checked", true);
+   else
+	   $('#SetSTA').prop("checked", false);
+   if ("%IP_STATIC%" == "true")
+       $('#IP_STATIC').prop("checked", true);
+   else
+	   $('#IP_STATIC').prop("checked", false);
+  </script>
+ </body>
+</html>

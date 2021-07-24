@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIGHTS : Ρυθμίσεις λειτουργίας</title>
+  <!-- Setup Working Parameters -->
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() //Όταν φορτώσει η σελίδα
+    {
+    //Αν πατήθηκε το κουμπί Save
+    $("#SaveBtn").click(function() {
+              var url = "/save_wp"; // the script where you handle the form input.
+              var data = "V1=" + $('#A1_LABL').val() + "&V2=" + $('#A1_TOPIC').val() + "&V3=" + $('#A1_ON').val() + "&V4=" + $('#A1_OFF').val() +
+                        "&V5=" + $('#A2_LABL').val() + "&V6=" + $('#A2_TOPIC').val() + "&V7=" + $('#A2_ON').val() + "&V8=" + $('#A2_OFF').val() +
+                        "&V9=" + $('#A3_LABL').val() + "&V10=" + $('#A3_TOPIC').val() + "&V11=" + $('#A3_ON').val() + "&V12=" + $('#A3_OFF').val();
+              $.ajax({
+                      type: "GET",
+                      url: url,
+                      data: data, //Serialize τα δεδομένα της φόρμας
+                      success: function(){location.reload();} //Αν έγινε επιτυχώς επαναφόρτωσε τη σελίδα
+                     });
+              return false; //avoid to execute the actual submit of the form.
+              });
+    });
+  </script>
+ </head>
+
+ <body>
+  <div class="container">
+   <center>
+	   <h1>Έλεγχος Φωτισμού</h1>
+       <h1>Ρυθμίσεις λειτουργίας</h1>
+   </center>
+   <table align="center" width="400">
+	 <tr bgcolor="#f7c95c" align="center">
+	   <td width="10%%"><strong>Α/Α</strong></td>
+	   <td width="30%%"><strong>ΙΔΙΟΤΗΤΑ</strong></td>
+	   <td width="*"><strong>ΤΙΜΗ</strong></td>
+	 </tr>
+	 <!-- 1ος Διακόπτης -->
+	 <tr bgcolor="#c8f7b2">
+	   <td rowspan="4" align="center">1</td>
+	   <td align="right"><label for="A1_LABL">Τίτλος χώρου:</label></td>
+	   <td><input type="text" id="A1_LABL" value="%A1_LABL%" style="width:160px; text-align:left" title="Ονομάστε τον χώρο στον οποίο βρίσκεται το φως"></td>
+	 </tr>
+	 <tr bgcolor="#c8f7b2">
+	   <td align="right"><label for="A1_TOPIC">MQTT Topic:</label></td>
+	   <td><input type="text" id="A1_TOPIC" value="%A1_TOPIC%" style="width:160px; text-align:left" title="Το Topic MQTT. Για δημοσίευση είναι [όνομα]_pub και για συνδρομή είναι [όνομα]_sub."></td>
+	 </tr>
+	 <tr bgcolor="#c8f7b2">
+	   <td align="right"><label for="A1_ON">ON State:</label></td>
+	   <td><input type="text" id="A1_ON" value="%A1_ON%" style="width:160px; text-align:left" title="Μέχρι 10 χαρακτήρες"></td>
+	 </tr>
+     <tr bgcolor="#c8f7b2">
+	   <td align="right"><label for="A1_OFF">OFF State:</label></td>
+	   <td><input type="text" id="A1_OFF" value="%A1_OFF%" style="width:160px; text-align:left" title="Μέχρι 10 χαρακτήρες"></td>
+	 </tr>
+
+	 <!-- 2ος Διακόπτης -->
+	 <tr bgcolor="#ebfab1">
+	   <td rowspan="4" align="center">2</td>
+	   <td align="right"><label for="A2_LABL">Τίτλος χώρου:</label></td>
+	   <td><input type="text" id="A2_LABL" value="%A2_LABL%" style="width:160px; text-align:left" title="Ονομάστε τον χώρο στον οποίο βρίσκεται το φως"></td>
+	 </tr>
+	 <tr bgcolor="#ebfab1">
+	   <td align="right"><label for="A2_TOPIC">MQTT Topic:</label></td>
+	   <td><input type="text" id="A2_TOPIC" value="%A2_TOPIC%" style="width:160px; text-align:left" title="Το Topic MQTT. Για δημοσίευση είναι [όνομα]_pub και για συνδρομή είναι [όνομα]_sub."></td>
+	 </tr>
+	 <tr bgcolor="#ebfab1">
+	   <td align="right"><label for="A2_ON">ON State:</label></td>
+	   <td><input type="text" id="A2_ON" value="%A2_ON%" style="width:160px; text-align:left" title="Μέχρι 10 χαρακτήρες"></td>
+	 </tr>
+     <tr bgcolor="#ebfab1">
+	   <td align="right"><label for="A2_OFF">OFF State:</label></td>
+	   <td><input type="text" id="A2_OFF" value="%A2_OFF%" style="width:160px; text-align:left" title="Μέχρι 10 χαρακτήρες"></td>
+	 </tr>
+
+	 <!-- 3ος Διακόπτης -->
+	 <tr bgcolor="#fae2b1">
+	   <td rowspan="4" align="center">3</td>
+	   <td align="right"><label for="A3_LABL">Τίτλος χώρου:</label></td>
+	   <td><input type="text" id="A3_LABL" value="%A3_LABL%" style="width:160px; text-align:left" title="Ονομάστε τον χώρο στον οποίο βρίσκεται το φως"></td>
+	 </tr>
+	 <tr bgcolor="#fae2b1">
+	   <td align="right"><label for="A3_TOPIC">MQTT Topic:</label></td>
+	   <td><input type="text" id="A3_TOPIC" value="%A3_TOPIC%" style="width:160px; text-align:left" title="Το Topic MQTT. Για δημοσίευση είναι [όνομα]_pub και για συνδρομή είναι [όνομα]_sub."></td>
+	 </tr>
+	 <tr bgcolor="#fae2b1">
+	   <td align="right"><label for="A3_ON">ON State:</label></td>
+	   <td><input type="text" id="A3_ON" value="%A3_ON%" style="width:160px; text-align:left" title="Μέχρι 10 χαρακτήρες"></td>
+	 </tr>
+     <tr bgcolor="#fae2b1">
+	   <td align="right"><label for="A3_OFF">OFF State:</label></td>
+	   <td><input type="text" id="A3_OFF" value="%A3_OFF%" style="width:160px; text-align:left" title="Μέχρι 10 χαρακτήρες"></td>
+	 </tr>
+   </table>
+
+   <center>
+     <button type="button" id="SaveBtn">Αποθήκευση</button>&nbsp;
+     <a href="/">Επιστροφή</a><br><br><small>V %VERSION% (c)2021 <a href="https://sv6gmp.blogspot.gr" target="_blank">Stavros S. Fotoglou</small></a>
+   </center>
+  </div>
+ </body>
+</html>

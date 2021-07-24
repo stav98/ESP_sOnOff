@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIGHTS : Αρχείο καταγραφής</title>
+  <!-- Setup Working Parameters -->
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() //Όταν φορτώσει η σελίδα
+    {
+    //Αν πατήθηκε το κουμπί Erase
+    $("#EraseLog").click(function() {
+              var url = "/log"; // the script where you handle the form input.
+              var data = "Erase=yes";
+              if (confirm('Βεβαιωθείτε ότι έχετε αποθηκεύσει τα δεδομένα καταγραφής. \n Θέλετε να διαγραφεί το αρχείο καταγραφής;'))
+                 {
+                  $.ajax({
+                          type: "GET",
+                          url: url,
+                          data: data, //Serialize τα δεδομένα της φόρμας
+                          success: function(){location.reload();} //Αν έγινε επιτυχώς επαναφόρτωσε τη σελίδα
+                         });
+                 }
+              return false; //avoid to execute the actual submit of the form.
+              });
+    });
+  </script>
+ </head>
+
+ <body>
+  <div class="container">
+   <center>
+	   <h1>Έλεγχος Φωτισμού</h1>
+       <h1>Αρχείο καταγραφής</h1>
+   </center>
+
+   <center>
+     <button type="button" id="EraseLog">Διαγραφή αρχείου</button>&nbsp;
+     <a href="/log?View=yes" target="_blank">Εμφάνιση αρχείου</a><br>&nbsp;
+     <a href="/log?View=save">Κατέβασμα αρχείου</a><br><br>
+     <h2>Γραφήματα</h2>
+     <a href="/chart?Type=switch1">Διακόπτης 1</a><br>
+     <a href="/chart?Type=switch2">Διακόπτης 2</a><br>
+     <a href="/chart?Type=switch3">Διακόπτης 3</a><br><br><br>
+     <a href="/">Επιστροφή</a><br>
+     <br><small>V %VERSION% (c)2021 <a href="https://sv6gmp.blogspot.gr" target="_blank">Stavros S. Fotoglou</small></a>
+  </center>
+  </div>
+ </body>
+</html>
