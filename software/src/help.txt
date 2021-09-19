@@ -11,4 +11,4 @@ nonos SDK 2.2.1+119 (191122)
 
 
 Για να σβήσω ένα retained μήνυμα από τον server γράφω:
-mosquitto_pub -t room3/light3_sub -u stav -P preveza -n -r -d
+mosquitto_pub -t room3/light3_sub -u user -P password -n -r -d
