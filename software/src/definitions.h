@@ -18,17 +18,17 @@
 #define PERIOD                1000 //Περίοδος μετρήσεων
 
 //--------------------- Μεταβλητές σύνδεσης στον MQTT broker ---------------------------------------------
-const char *mqtt_server;          //Όνομα του mqtt server π.χ. sv6gmp.gq ή sfotog.gq
+const char *mqtt_server;          //Όνομα του mqtt server π.χ. example.com
 int mqtt_port;                    //Πόρτα π.χ. 1883
 const char *mqttuser;             //"user"
-const char *mqttpass;             //"123456"
+const char *mqttpass;             //"password"
 byte mqtt_state = 0;
 
 //--------------------- Όνομα του Server για να κάνει έλεγχο σύνδεσης ------------------------------------
 const char *testhost = "www.google.com";  //Η διεύθυνση για να κάνει έλεγχο σύνδεσης στο διαδίκτυο
-const char *update_host = "users.sch.gr";
-String Dl_Path = "/stfotoglou/download/lights/";
-String Dl_Filename; //Η πλήρης διαδρομή του αρχείου π.χ. /stfotoglou/download/lights/test.txt δημιουργείται μέσα στην download() στο network.h
+const char *update_host = "users.school.com";
+String Dl_Path = "/user/download/lights/";
+String Dl_Filename; //Η πλήρης διαδρομή του αρχείου π.χ. /user/download/lights/test.txt δημιουργείται μέσα στην download() στο network.h
 String FileName, Version; //Το όνομα του αρχείου στο SPIFFS
 byte Dl_State = 0;
 bool CanUpdate;
